@@ -32,6 +32,8 @@ const CompanyHistorySection = () => {
     { period: '2022', title: 'Mapping & Survey', description: ['ZNT (Kab. Pemalang, Kab. Pinrang dan Kab. Lombok Tengah)', 'Pendataan Objek Pajak PBB (Kota Sidrap, Kab. Pinrang)', 'Penilaian Individu (Kab. Pemalang, Kab. Gowa)', 'Pemutakhiran Duta PBB Kota Makassar', 'dll'] },
     { period: '2023', title: 'Application', description: ['Pengembangan Aplikasi ePADA, Pemeliharaan Basis Data Oracle (Kab. Blitar)', 'Aplikasi ePotensi Kab. Banyuasin', 'Perawatan dan Pengembangan Sistem PBB & BPHTB (TTE Berbasis Web) Kab. Kutai Kartanegara', 'Aplikasi SImpadda, Smartmap Web, ePasar, dan Pajak Daerah Lainnya Kota Bekasi', 'Aplikasi eSISMIOP Kab. Pemalang dan Kab. Karimun', 'dll'] },
     { period: '2023', title: 'Mapping & Survey', description: ['ZNT (Kab. Pemalang, Kab. Pinrang, Kab. Blitar dan Kab. Lombok Tengah)', 'Pendataan Objek Pajak PBB (Kota Makassar, Kab. Pemalang, Kab. Blitar dan Kab. Wajo)', 'Penilaian Individu (Kab. Pemalang, Kab. Blitar)', 'dll'] },
+    { period: '2024', title: 'Application', description: ['Pengembangan Aplikasi ePADA, Pemeliharaan Basis Data Oracle (Kab. Blitar)','Pengadaan Jasa Sistem Informasi Pengawasan Kapal', 'Pembuatan Aplikasi ePorporasi dan Pengembangan Aplikasi eSismiop dan eBPHTB', 'dll'] },
+    { period: '2024', title: 'Mapping & Survey', description: ['Belanja Pemutakhiran Basis Data Objek Pajak PBB', 'Pembuatan Basis Data SISMIOP', 'dll'] },
   ];
 
   // Mengelompokkan milestones berdasarkan tahun

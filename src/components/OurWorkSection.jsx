@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// Impor Swiper React components
+// Impor Swiper React components (DIKEMBALIKAN)
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 
-// Impor Swiper styles
+// Impor Swiper styles (DIKEMBALIKAN)
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -23,20 +23,26 @@ import project9 from '../assets/projects/project9.png';
 import project10 from '../assets/projects/project10.png';
 import project11 from '../assets/projects/project11.png';
 
+// Ikon untuk tombol close
+const CloseIcon = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor" {...props}>
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z" />
+    </svg>
+);
 
-// Data untuk setiap proyek (gambar, judul, deskripsi)
+// Data untuk setiap proyek
 const projectsData = [
-    { id: 1, image: project1, title: 'Dashboard Analytics', description: 'Pengembangan dashboard monitoring sistem PBB & BPHTB Realtime dengan menampilkan grafik data yang informatif.' },
+    { id: 1, image: project1, title: 'Penilaian Individu PBB P2', description: 'Sosialisasi dan penyuluhan kepada wajib pajak tentang rencana kegiatan Penilaian Individual PBB P2.' },
     { id: 2, image: project2, title: 'Sistem Informasi Geografis', description: 'Pemetaan digital untuk analisis Zona Nilai Tanah (ZNT) dan potensi wilayah.' },
     { id: 3, image: project3, title: 'Rapat Koordinasi', description: 'Presentasi dan koordinasi proyek bersama jajaran pemerintah daerah untuk memastikan keselarasan tujuan.' },
-    { id: 4, image: project4, title: 'Aplikasi Host to Host', description: 'Implementasi sistem pembayaran online Host to Host (H2H) yang terintegrasi dengan berbagai Bank Daerah.' },
+    { id: 4, image: project4, title: 'Aplikasi Host to Host', description: 'Implementasi sistem pembayaran online H2H yang terintegrasi dengan berbagai Bank Daerah.' },
     { id: 5, image: project5, title: 'Manajemen Data Wajib Pajak', description: 'Aplikasi untuk manajemen data wajib pajak yang terstruktur dan mudah diakses.' },
-    { id: 6, image: project6, title: 'Pelatihan & Sosialisasi', description: 'Pelatihan dan sosialisasi penggunaan aplikasi kepada para stakeholder di lingkungan pemerintah daerah.' },
-    { id: 7, image: project7, title: 'Dashboard Monitoring Pajak', description: 'Dashboard interaktif yang menampilkan data dari berbagai sumber untuk monitoring pajak daerah secara komprehensif.' },
-    { id: 8, image: project8, title: 'Aplikasi e-SPTPD', description: 'Sistem Pelaporan Pajak Daerah secara online (e-SPTPD) untuk memudahkan Wajib Pajak.' },
-    { id: 9, image: project9, title: 'Pendampingan Wajib Pajak', description: 'Tim kami memberikan pendampingan langsung kepada Wajib Pajak untuk memastikan kelancaran implementasi sistem.' },
-    { id: 10, image: project10, title: 'Peta Zona Nilai Tanah', description: 'Hasil akhir dari survey dan pemetaan berupa Peta Zona Nilai Tanah (ZNT) yang detail dan akurat.' },
-    { id: 11, image: project11, title: 'Peta Blok PBB', description: 'Pembuatan dan pemutakhiran Peta Blok PBB sebagai dasar pengelolaan Pajak Bumi dan Bangunan.' },
+    { id: 6, image: project6, title: 'Pelatihan & Sosialisasi', description: 'Pelatihan penggunaan aplikasi kepada para stakeholder di lingkungan pemerintah daerah.' },
+    { id: 7, image: project7, title: 'Pelatihan & Sosialisasi', description: 'Pelatihan penggunaan aplikasi kepada para stakeholder di lingkungan pemerintah daerah.' },
+    { id: 8, image: project8, title: 'Pelatihan & Sosialisasi', description: 'Pelatihan penggunaan aplikasi kepada para stakeholder di lingkungan pemerintah daerah.' },
+    { id: 9, image: project9, title: 'Pelatihan & Sosialisasi', description: 'Pelatihan penggunaan aplikasi kepada para stakeholder di lingkungan pemerintah daerah.' },
+    { id: 10, image: project10, title: 'Pelatihan & Sosialisasi', description: 'Pelatihan penggunaan aplikasi kepada para stakeholder di lingkungan pemerintah daerah.' },
+    { id: 11, image: project11, title: 'Pelatihan & Sosialisasi', description: 'Pelatihan penggunaan aplikasi kepada para stakeholder di lingkungan pemerintah daerah.' },
 ];
 
 const OurWorkSection = () => {
@@ -59,6 +65,7 @@ const OurWorkSection = () => {
                         <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
                     </motion.div>
 
+                    {/* Tampilan utama kembali menggunakan Swiper/Slider */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
@@ -72,18 +79,10 @@ const OurWorkSection = () => {
                             navigation
                             pagination={{ clickable: true }}
                             breakpoints={{
-                                // Tampilan saat layar >= 640px
-                                640: {
-                                    slidesPerView: 2,
-                                    spaceBetween: 20,
-                                },
-                                // Tampilan saat layar >= 1024px
-                                1024: {
-                                    slidesPerView: 3,
-                                    spaceBetween: 30,
-                                },
+                                640: { slidesPerView: 2, spaceBetween: 20 },
+                                1024: { slidesPerView: 3, spaceBetween: 30 },
                             }}
-                            className="pb-12" // Padding bawah untuk pagination
+                            className="pb-12"
                         >
                             {projectsData.map((project) => (
                                 <SwiperSlide key={project.id}>
@@ -104,8 +103,7 @@ const OurWorkSection = () => {
                 </div>
             </section>
             
-
-            {/* Modal Pop-up */}
+            {/* Modal Pop-up Minimalis */}
             <AnimatePresence>
                 {selectedProject && (
                     <motion.div
@@ -113,20 +111,32 @@ const OurWorkSection = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4"
-                        onClick={() => setSelectedProject(null)} // Menutup modal saat area gelap diklik
+                        onClick={() => setSelectedProject(null)}
                     >
                         <motion.div
-                            initial={{ scale: 0.8, opacity: 0 }}
+                            initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
-                            exit={{ scale: 0.8, opacity: 0 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
                             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-                            className="bg-white dark:bg-gray-800 rounded-lg shadow-2xl max-w-3xl w-full overflow-hidden"
-                            onClick={(e) => e.stopPropagation()} // Mencegah modal tertutup saat kontennya diklik
+                            className="relative bg-white dark:bg-gray-800 rounded-lg shadow-2xl w-full max-w-xl max-h-[85vh] overflow-y-auto"
+                            onClick={(e) => e.stopPropagation()}
                         >
-                            <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-80 object-cover" />
+                            <button
+                                onClick={() => setSelectedProject(null)}
+                                className="absolute top-3 right-3 text-gray-400 hover:text-gray-800 dark:hover:text-white transition-colors z-10"
+                                aria-label="Close"
+                            >
+                                <CloseIcon />
+                            </button>
+
+                            <img 
+                                src={selectedProject.image} 
+                                alt={selectedProject.title} 
+                                className="w-full h-auto rounded-t-lg"
+                            />
                             <div className="p-6">
                                 <h3 className="text-2xl font-bold font-heading text-gray-900 dark:text-white mb-2">{selectedProject.title}</h3>
-                                <p className="text-gray-600 dark:text-gray-300">{selectedProject.description}</p>
+                                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{selectedProject.description}</p>
                             </div>
                         </motion.div>
                     </motion.div>
