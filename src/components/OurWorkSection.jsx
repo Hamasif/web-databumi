@@ -32,17 +32,17 @@ const CloseIcon = (props) => (
 
 // Data untuk setiap proyek
 const projectsData = [
-    { id: 1, image: project1, title: 'Penilaian Individu PBB P2', description: 'Sosialisasi dan penyuluhan kepada wajib pajak tentang rencana kegiatan Penilaian Individual PBB P2.' },
-    { id: 2, image: project2, title: 'Sistem Informasi Geografis', description: 'Pemetaan digital untuk analisis Zona Nilai Tanah (ZNT) dan potensi wilayah.' },
-    { id: 3, image: project3, title: 'Rapat Koordinasi', description: 'Presentasi dan koordinasi proyek bersama jajaran pemerintah daerah untuk memastikan keselarasan tujuan.' },
+    { id: 1, image: project1, title: 'Sosialisasi e-SPTPO', description: 'Sosialisasi dan Penyuluhan e-SPTPO kepada Badan Pendanaan Daerah Kabupaten Blitar.' },
+    { id: 2, image: project2, title: 'Sosialisasi GeoMaps', description: 'Sosialisasi GeoMaps dari PT Data Bumi di Kota Makassar.' },
+    { id: 3, image: project3, title: 'HAKI SiPRIDA', description: 'Sertifikat Surat Pencatatan Ciptaan untuk PT DATA BUMI aplikasi SiPRIDA.' },
     { id: 4, image: project4, title: 'Aplikasi Host to Host', description: 'Implementasi sistem pembayaran online H2H yang terintegrasi dengan berbagai Bank Daerah.' },
-    { id: 5, image: project5, title: 'Manajemen Data Wajib Pajak', description: 'Aplikasi untuk manajemen data wajib pajak yang terstruktur dan mudah diakses.' },
-    { id: 6, image: project6, title: 'Pelatihan & Sosialisasi', description: 'Pelatihan penggunaan aplikasi kepada para stakeholder di lingkungan pemerintah daerah.' },
-    { id: 7, image: project7, title: 'Pelatihan & Sosialisasi', description: 'Pelatihan penggunaan aplikasi kepada para stakeholder di lingkungan pemerintah daerah.' },
-    { id: 8, image: project8, title: 'Pelatihan & Sosialisasi', description: 'Pelatihan penggunaan aplikasi kepada para stakeholder di lingkungan pemerintah daerah.' },
-    { id: 9, image: project9, title: 'Pelatihan & Sosialisasi', description: 'Pelatihan penggunaan aplikasi kepada para stakeholder di lingkungan pemerintah daerah.' },
-    { id: 10, image: project10, title: 'Pelatihan & Sosialisasi', description: 'Pelatihan penggunaan aplikasi kepada para stakeholder di lingkungan pemerintah daerah.' },
-    { id: 11, image: project11, title: 'Pelatihan & Sosialisasi', description: 'Pelatihan penggunaan aplikasi kepada para stakeholder di lingkungan pemerintah daerah.' },
+    { id: 5, image: project5, title: 'HAKI GeoMaps', description: 'Sertifikat Surat Pencatatan Ciptaan untuk PT DATA BUMI aplikasi GeoMaps.' },
+    { id: 6, image: project6, title: 'Pelaksanaan Penilaian Individu PBB P2', description: 'Objek Pajak yang pernah kami laksanakan pada kegiatan Penilaian Individual PBB B2 di Kota Lombok.' },
+    { id: 7, image: project7, title: 'Pelaksanaan Penilaian Individu PBB P2', description: 'Pelaporan Kegiatan yang pernah kami laksanakan pada kegiatan Penilaian Individual PBB B2.' },
+    { id: 8, image: project8, title: 'Pelaksanaan Penilaian Individu PBB P2', description: 'Tim di lapangan  pada kegiatan Penilaian Individual PBB B2.' },
+    { id: 9, image: project9, title: 'Pengukuran Bidang BUMI', description: 'Pengukuran bidang BUMI dilakukan oleh TIM lapangan PT DATA BUMI di Kabupaten Blitar.' },
+    { id: 10, image: project10, title: 'Survey Zona Nilai Tanah', description: 'Survey zona nilai tanah dilakukan oleh TIM lapangan PT DATA BUMI di Kabupaten Blitar.' },
+    { id: 11, image: project11, title: 'Survey Batas Desa', description: 'Survey batas desa dilakukan oleh TIM lapangan PT DATA BUMI dan juga aparat desa di Kabupaten Blitar.' },
 ];
 
 const OurWorkSection = () => {
