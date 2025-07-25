@@ -4,7 +4,6 @@ import { FaRocket, FaMobileAlt, FaGlobe, FaMousePointer, FaPrint } from 'react-i
 import { IoDuplicateOutline } from "react-icons/io5";
 
 // Impor semua logo mitra dari folder assets
-// Pastikan path dan nama file sesuai dengan yang Anda miliki
 import mitra1 from '../assets/partners/mitra1.png';
 import mitra2 from '../assets/partners/mitra2.png';
 import mitra3 from '../assets/partners/mitra3.png';
@@ -128,73 +127,73 @@ const ServiceWeOffer = () => {
 
   return (
     <div id="services">
-    <section className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* --- Bagian Layanan --- */}
-        <motion.h2 
-          className="text-6xl font-bold text-center text-gray-800 mb-12"
-          variants={headingVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-        >
-          Service we offer
-        </motion.h2>
-        
-        <motion.div 
-          className="grid grid-cols-2 md:grid-cols-3 gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
+      <section className="py-16 sm:py-20 lg:py-24 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* --- Bagian Layanan --- */}
+          <motion.h2 
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-gray-800 dark:text-white mb-12"
+            variants={headingVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            Service We Offer
+          </motion.h2>
+          
+          <motion.div 
+            className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            {services.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <motion.div 
+                  key={index} 
+                  className="bg-blue-500 dark:bg-blue-700 text-white p-6 sm:p-8 rounded-xl shadow-lg flex flex-col items-center justify-center text-center cursor-pointer hover:bg-blue-600 dark:hover:bg-blue-600 transition-colors duration-300 hover:-translate-y-1"
+                  variants={itemVariants}
+                >
+                  <Icon className="text-4xl sm:text-5xl mb-4" />
+                  <h3 className="font-semibold text-sm sm:text-base lg:text-lg">{service.title}</h3>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          {/* --- Bagian Mitra --- */}
+          <motion.h2 
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center text-gray-800 dark:text-white mt-20 sm:mt-24 mb-12"
+            variants={headingVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+          >
+            Trusted by Some of Amazing
+          </motion.h2>
+
+          <motion.div 
+            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 sm:gap-5"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+          >
+            {partners.map((partner) => (
               <motion.div 
-                key={index} 
-                className="bg-blue-500 text-white p-8 rounded-xl shadow-lg flex flex-col items-center justify-center text-center cursor-pointer hover:bg-blue-600 transition-colors duration-300"
+                key={partner.id}
+                className="bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-700 flex items-center justify-center h-24 sm:h-28 shadow-sm transition-all duration-300 hover:shadow-md hover:border-blue-300 dark:hover:border-blue-600"
                 variants={itemVariants}
               >
-                <Icon className="text-5xl mb-4" />
-                <h3 className="font-semibold text-lg">{service.title}</h3>
+                <img src={partner.src} alt={partner.alt} className="max-h-full max-w-full object-contain" />
               </motion.div>
-            );
-          })}
-        </motion.div>
+            ))}
+          </motion.div>
 
-        {/* --- Bagian Mitra --- */}
-        <motion.h2 
-          className="text-6xl font-bold text-center text-gray-800 mt-24 mb-12"
-          variants={headingVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-        >
-          Trusted by some of amazing
-        </motion.h2>
-
-        <motion.div 
-          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-        >
-          {partners.map((partner) => (
-            <motion.div 
-              key={partner.id}
-              className="bg-white p-4 rounded-lg border border-gray-200 flex items-center justify-center h-28 shadow-sm transition-shadow duration-300 hover:shadow-md"
-              variants={itemVariants}
-            >
-              <img src={partner.src} alt={partner.alt} className="max-h-full max-w-full object-contain" />
-            </motion.div>
-          ))}
-        </motion.div>
-
-      </div>
-    </section>
+        </div>
+      </section>
     </div>
   );
 };
