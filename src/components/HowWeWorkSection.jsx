@@ -5,7 +5,7 @@ const HowWeWorkSection = () => {
   const values = [
     {
       title: 'Application Development',
-      description: 'Sebagai Developer sudah banyak aplikasi yang telah kami bangun terutama bidang pajak daerah seperti (SISMIOP, POSPBB, e- BPHTB, e-SPTPD, SIMPATDA, dll.) dengan Brand Beetax',
+      description: 'Sebagai Developer sudah banyak aplikasi yang telah kami bangun terutama bidang pajak daerah seperti (SISMIOP, POSPBB, e- BPHTB, e-SPTPD, SIMPATDA, dll.) dengan Brand SiPRIDA (Sistem Informasi Pajak dan retribusi daerah)',
       highlight: 'Application',
     },
     {

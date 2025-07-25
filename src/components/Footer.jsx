@@ -3,20 +3,32 @@ import { MdEmail, MdPhone, MdLocationOn } from 'react-icons/md';
 
 // Data untuk tautan agar mudah diubah
 const quickLinks = [
-  { name: 'About Us', href: '#' },
-  { name: 'Company History', href: '#' },
-  { name: 'Services', href: '#' },
-  { name: 'Our Work', href: '#' },
-  { name: 'Team', href: '#' },
+  { name: 'About Us', href: 'about-us' },
+  { name: 'Company History', href: 'company-history' },
+  { name: 'Services', href: 'services' },
+  { name: 'Our Work', href: 'our-work' },
+  { name: 'Team', href: 'team' },
 ];
 
 const Footer = () => {
+  // Fungsi untuk menangani klik pada tautan dan melakukan scroll halus
+  const handleLinkClick = (event, targetId) => {
+    // Mencegah perilaku default dari tag anchor (<a>)
+    event.preventDefault(); 
+    
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      // Melakukan scroll ke elemen target dengan efek halus
+      targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <>
       <footer className="bg-[#004A99] text-white pt-16 pb-8">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-6 gap-8">
-            {/* Kolom Logo dan Nama Perusahaan (lebih lebar) */}
+            {/* Kolom Logo dan Nama Perusahaan */}
             <div className="md:col-span-2">
               <div className="flex items-center gap-4">
                 <img src="/logo.png" alt="Logo PT. Data Bumi Indonesia" className="h-14 w-14" />
@@ -27,13 +39,18 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Kolom Quick Links (lebih lebar) */}
+            {/* Kolom Quick Links */}
             <div className="md:col-span-2">
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
-                    <a href={link.href} className="hover:underline text-gray-200">
+                    {/* Mengubah tag <a> untuk memanggil fungsi handleLinkClick */}
+                    <a
+                      href={`#${link.href}`} // href tetap ada untuk aksesibilitas & fallback
+                      onClick={(e) => handleLinkClick(e, link.href)}
+                      className="hover:underline text-gray-200 cursor-pointer"
+                    >
                       {link.name}
                     </a>
                   </li>
@@ -41,7 +58,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            {/* Kolom Contact Us (lebih lebar) */}
+            {/* Kolom Contact Us */}
             <div className="md:col-span-2">
               <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
               <div className="space-y-4">
