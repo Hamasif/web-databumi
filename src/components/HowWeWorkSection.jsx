@@ -1,4 +1,5 @@
-import { motion, easeInOut } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const HowWeWorkSection = () => {
   // Data yang relevan untuk section ini
@@ -9,14 +10,14 @@ const HowWeWorkSection = () => {
       highlight: 'Application',
     },
     {
-      title: 'Land and Bulding Tax Survey',
+      title: 'Land and Building Tax Survey',
       description: 'Kami juga fokus di bidang jasa survey dan pemetaan Pajak Bumi dan Bangunan, Penilaian Tanah dan Bangunan dan Zona Nilai Tanah',
-      highlight: 'Building',
+      highlight: 'Survey',
     },
     {
-      title: 'Geographic Information System ',
+      title: 'Geographic Information System',
       description: 'Pengembangan Sistem Informasi Geografis Seperti : Smart Map PBB Web (Sig Web), Profile Wajib Pajak KPP, GIS Tracking, Pendataan Berbasis Android dll',
-      highlight: 'Geographic',
+      highlight: 'GIS',
     },
     {
       title: 'Payment Gateway (Host to Host)',
@@ -26,43 +27,44 @@ const HowWeWorkSection = () => {
   ];
 
   return (
-    <section className="py-8 sm:py-12 lg:py-16 xl:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-800 dark:to-gray-900">
+    // Menambahkan ID 'services' agar bisa di-scroll dari Navbar
+    <section id="services" className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-6 sm:mb-8 lg:mb-12 xl:mb-20"
+          className="text-center mb-12 lg:mb-20"
         >
-          <h2 className="text-xl sm:text-2xl lg:text-4xl xl:text-6xl font-bold font-heading text-gray-900 dark:text-white mb-3 sm:mb-4 lg:mb-6 xl:mb-8 px-2">
-            How we work on our project
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-gray-900 dark:text-white mb-4">
+            How We Work on Our Project
           </h2>
-          <p className="text-sm sm:text-base lg:text-xl text-gray-600 dark:text-gray-400 font-body max-w-xs sm:max-w-2xl lg:max-w-3xl xl:max-w-4xl mx-auto leading-relaxed px-4">
-            Dengan Tenaga Ahli yang sudah berpengalaman di bidangnya kami yakin dapat memberikan pelayanan dan kualitas terbaik bagi anda, dengan dukungan penuh dan pendampingan secara rutin dengan customer service dan technical support 24 Jam
+          <p className="text-base lg:text-lg text-gray-600 dark:text-gray-400 font-body max-w-3xl mx-auto leading-relaxed">
+            Dengan Tenaga Ahli yang sudah berpengalaman di bidangnya kami yakin dapat memberikan pelayanan dan kualitas terbaik bagi anda, dengan dukungan penuh dan pendampingan secara rutin dengan customer service dan technical support 24 Jam.
           </p>
         </motion.div>
 
-        <div className="grid gap-4 sm:gap-6 lg:gap-8 lg:grid-cols-2">
+        <div className="grid gap-8 lg:grid-cols-2">
           {values.map((value, index) => (
             <motion.div
               key={value.title}
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group"
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="group" // Group untuk mengontrol state hover pada elemen anak
             >
-              <div className="bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl xl:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-lg border border-gray-100 dark:border-gray-700 hover:border-primary-200 dark:hover:border-primary-700 hover:shadow-xl transition-all duration-500 h-full">
-                <div className="mb-3 sm:mb-4 lg:mb-6">
-  <span className="inline-block px-2 sm:px-3 lg:px-4 py-1 lg:py-2 bg-blue-500 text-white text-xs lg:text-sm font-semibold rounded-full shadow-md">
-    {value.highlight}
-  </span>
-</div>
-                <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-bold font-heading text-gray-900 dark:text-white mb-2 sm:mb-3 lg:mb-4">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out h-full hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 dark:hover:shadow-blue-800/30">
+                <div className="mb-6">
+                  <span className="inline-block px-4 py-1 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-300 text-sm font-semibold rounded-full transition-all duration-300 group-hover:bg-blue-500 group-hover:text-white group-hover:scale-110">
+                    {value.highlight}
+                  </span>
+                </div>
+                <h3 className="text-xl lg:text-2xl font-bold font-heading text-gray-900 dark:text-white mb-4 transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
                   {value.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 font-body text-sm lg:text-base leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-400 font-body text-base leading-relaxed">
                   {value.description}
                 </p>
               </div>

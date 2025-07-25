@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'framer-motion';
 
 const CompanyHistorySection = () => {
@@ -48,92 +49,94 @@ const CompanyHistorySection = () => {
 
   return (
     <div id="company-history" className="w-full bg-white dark:bg-gray-900 pt-16" style={{ minHeight: '100vh', overflowX: 'hidden', overflowY: 'auto' }}>
-    <section className="py-8 sm:py-12 lg:py-16 xl:py-24 bg-white dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12 sm:mb-16 lg:mb-20"
-        >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-gray-900 dark:text-white mb-4">
-            Company History
-          </h2>
-          <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
-        </motion.div>
+      <section className="py-8 sm:py-12 lg:py-16 xl:py-24 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12 sm:mb-16 lg:mb-20"
+          >
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold font-heading text-gray-900 dark:text-white mb-4">
+              Company History
+            </h2>
+            <div className="w-24 h-1 bg-blue-500 mx-auto"></div>
+          </motion.div>
 
-        {/* --- Visi & Misi Section --- */}
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 mb-16 sm:mb-20 lg:mb-24">
-          {visionMission.map((item, index) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700"
-            >
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">{item.title}</h3>
-              <div className="bg-blue-500 text-white p-6 rounded-lg">
-                <p className="leading-relaxed">{item.description}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* --- Timeline Section --- */}
-        <div className="relative">
-          {/* Garis Linimasa */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-blue-200 dark:from-blue-800 hidden lg:block"></div>
-
-          <div className="space-y-16">
-            {Object.entries(groupedMilestones).map(([year, sections], index) => (
+          {/* --- Visi & Misi Section --- */}
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 mb-16 sm:mb-20 lg:mb-24">
+            {visionMission.map((item, index) => (
               <motion.div
-                key={year}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                key={item.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-                className={`flex flex-col lg:flex-row items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                // EFEK HOVER DITAMBAHKAN DI SINI
+                className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-200/50 dark:hover:shadow-blue-800/20"
               >
-                {/* Konten Kartu Tahunan */}
-                <div className="flex-1 w-full lg:w-5/12">
-                  <div className="relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
-                    {/* Pil Tahun */}
-                    <div className="absolute -top-5 left-1/2 lg:left-auto lg:-right-5 transform -translate-x-1/2 lg:translate-x-0 bg-blue-500 text-white px-5 py-2 rounded-full font-bold shadow-lg">
-                      {year}
-                    </div>
-
-                    {/* Daftar Konten */}
-                    <div className="space-y-6">
-                      {sections.map((section, sectionIndex) => (
-                        <div key={sectionIndex}>
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{section.title}</h3>
-                          <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
-                            {section.description.map((item, i) => (
-                              <li key={i}>{item}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">{item.title}</h3>
+                <div className="bg-blue-500 text-white p-6 rounded-lg">
+                  <p className="leading-relaxed">{item.description}</p>
                 </div>
-
-                {/* Titik Linimasa */}
-                <div className="relative z-10 my-6 lg:my-0 lg:mx-6">
-                  <div className="w-5 h-5 rounded-full bg-blue-500 border-4 border-white dark:border-gray-900"></div>
-                </div>
-
-                {/* Spacer untuk sisi lain linimasa */}
-                <div className="flex-1 hidden lg:block"></div>
               </motion.div>
             ))}
           </div>
+
+          {/* --- Timeline Section --- */}
+          <div className="relative">
+            {/* Garis Linimasa */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-blue-200 dark:bg-blue-800 hidden lg:block"></div>
+
+            <div className="space-y-16">
+              {Object.entries(groupedMilestones).map(([year, sections], index) => (
+                <motion.div
+                  key={year}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -60 : 60 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.7, delay: 0.1 }}
+                  className={`flex flex-col lg:flex-row items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+                >
+                  {/* Konten Kartu Tahunan */}
+                  <div className="flex-1 w-full lg:w-5/12">
+                    {/* EFEK HOVER DITAMBAHKAN DI SINI */}
+                    <div className="group relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-2xl border border-gray-200/50 dark:border-gray-700/50 transition-all duration-300 ease-in-out hover:-translate-y-2 hover:border-blue-300 dark:hover:border-blue-600">
+                      {/* Pil Tahun */}
+                      <div className="absolute -top-5 left-1/2 lg:left-auto lg:-right-5 transform -translate-x-1/2 lg:translate-x-0 bg-blue-500 text-white px-5 py-2 rounded-full font-bold shadow-lg transition-colors duration-300 group-hover:bg-blue-600">
+                        {year}
+                      </div>
+
+                      {/* Daftar Konten */}
+                      <div className="space-y-6">
+                        {sections.map((section, sectionIndex) => (
+                          <div key={sectionIndex}>
+                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{section.title}</h3>
+                            <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-1">
+                              {section.description.map((item, i) => (
+                                <li key={i}>{item}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Titik Linimasa */}
+                  <div className="relative z-10 my-6 lg:my-0 lg:mx-6">
+                    <div className="w-5 h-5 rounded-full bg-blue-500 border-4 border-white dark:border-gray-900"></div>
+                  </div>
+
+                  {/* Spacer untuk sisi lain linimasa */}
+                  <div className="flex-1 hidden lg:block"></div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </div>
   );
 };
