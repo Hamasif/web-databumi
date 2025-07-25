@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { scroller } from 'react-scroll';
 
 const navLinks = [
   { name: 'Home', targetId: 'home' },
@@ -19,18 +18,23 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // 1. Mengatur style navbar (transparan/putih)
       setIsScrolled(window.scrollY > 50);
 
-      // 2. Logika "Scroll Spy" manual
-      // Loop melalui semua link dari bawah ke atas
+      // --- PERBAIKAN LOGIKA SCROLL SPY ---
+      // Loop dari BAWAH ke ATAS untuk menemukan section aktif yang paling tepat.
+      // Dengan cara ini, section pertama yang cocok adalah yang benar.
       for (let i = navLinks.length - 1; i >= 0; i--) {
         const link = navLinks[i];
         const section = document.getElementById(link.targetId);
         
-        if (section && section.offsetTop <= window.scrollY + 150) {
-          setActiveLink(link.name);
-          break; // Hentikan loop setelah menemukan section yang aktif
+        if (section) {
+          const sectionTop = section.offsetTop;
+          // Cek apakah posisi scroll sudah melewati bagian atas section (dengan offset 150px)
+          if (window.scrollY >= sectionTop - 150) {
+            setActiveLink(link.name);
+            // Hentikan fungsi setelah menemukan link aktif agar tidak tertimpa oleh section di atasnya.
+            return; 
+          }
         }
       }
     };
@@ -52,16 +56,22 @@ const Navbar = () => {
     };
   }, [isMenuOpen]);
 
+  // Fungsi handleLinkClick sudah benar dan tidak perlu diubah.
   const handleLinkClick = (linkName, targetId) => {
     setActiveLink(linkName);
     setIsMenuOpen(false);
 
-    scroller.scrollTo(targetId, {
-      duration: 800,
-      delay: 0,
-      smooth: 'easeInOutQuart',
-      offset: -80, 
-    });
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+        const navbarHeight = 80; 
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+        window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+        });
+    }
   };
 
   return (
@@ -70,7 +80,7 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 100 }}
       className={`top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
-        isScrolled ? 'fixed bg-white shadow-lg' : 'absolute'
+        isScrolled ? 'fixed bg-white shadow-lg dark:bg-gray-800' : 'absolute'
       }`}
     >
       <div className={`max-w-7xl mx-auto flex justify-between items-center transition-all duration-300 ${
@@ -96,7 +106,7 @@ const Navbar = () => {
                     activeLink === link.name
                       ? 'text-white'
                       : isScrolled
-                        ? 'text-gray-800 hover:text-blue-500'
+                        ? 'text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400'
                         : 'text-gray-200 hover:text-white'
                   }`}
                 >
@@ -117,8 +127,8 @@ const Navbar = () => {
         
         <div className="md:hidden">
             <button 
-                onClick={() => setIsMenuOpen(!isMenuOpen)} 
-                className={`p-2 rounded-md transition-colors ${isScrolled ? 'text-gray-800' : 'text-white'}`}
+              onClick={() => setIsMenuOpen(!isMenuOpen)} 
+              className={`p-2 rounded-md transition-colors ${isScrolled ? 'text-gray-800 dark:text-gray-200' : 'text-white'}`}
             >
                 <svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="2em" width="2em">
                     {isMenuOpen ? (
@@ -134,11 +144,11 @@ const Navbar = () => {
       <AnimatePresence>
         {isMenuOpen && (
             <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
-                className="md:hidden bg-white dark:bg-gray-800 shadow-lg"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              className="md:hidden bg-white dark:bg-gray-800 shadow-lg"
             >
                 <ul className="flex flex-col p-4">
                     {navLinks.map((link) => (
@@ -147,8 +157,8 @@ const Navbar = () => {
                                 onClick={() => handleLinkClick(link.name, link.targetId)}
                                 className={`w-full text-left font-semibold p-4 rounded-md transition-colors ${
                                     activeLink === link.name 
-                                    ? 'bg-blue-100 text-blue-600' 
-                                    : 'text-gray-700 hover:bg-gray-100'
+                                    ? 'bg-blue-100 text-blue-600 dark:bg-blue-600 dark:text-white' 
+                                    : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-700'
                                 }`}
                             >
                                 {link.name}
