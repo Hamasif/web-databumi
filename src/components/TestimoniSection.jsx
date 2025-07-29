@@ -9,35 +9,50 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 
-// Data testimoni (contoh)
+// --- Impor gambar avatar lokal ---
+// Pastikan path ini sesuai dengan struktur folder proyek Anda
+import testimoni1 from '../assets/testimoni/testimoni1.png';
+import testimoni2 from '../assets/testimoni/testimoni2.png';
+import testimoni3 from '../assets/testimoni/testimoni3.png';
+import testimoni4 from '../assets/testimoni/testimoni4.png';
+import testimoni5 from '../assets/testimoni/testimoni5.png';
+
+// Data testimoni menggunakan avatar lokal
 const testimonials = [
   {
-    name: 'Budi Santoso',
-    company: 'Pemda Kab. Sidoarjo',
-    comment: 'Layanan yang diberikan sangat profesional dan hasilnya melebihi ekspektasi. Aplikasi yang dibangun sangat memudahkan pekerjaan kami sehari-hari.',
+    name: 'Pak Agus Abdullah',
+    company: 'Luwu Timur',
+    comment: '"Ini lebih dari sekadar aplikasi, ini adalah investasi strategis. Tim mereka mengubah proses manual kami yang memakan waktu menjadi sistem digital yang efisien, dan hasilnya langsung terlihat pada peningkatan kinerja kami. Jika Anda serius ingin melakukan transformasi digital dan melihat hasil nyata, jangan cari di tempat lain. Mereka adalah partner yang tepat!"',
     rating: 5,
-    avatar: 'https://i.pravatar.cc/150?img=12', // Avatar placeholder
+    avatar: testimoni1, // Menggunakan gambar yang diimpor
   },
   {
-    name: 'Citra Lestari',
-    company: 'Bapenda Kota Batu',
-    comment: 'Tim Data Bumi sangat responsif dan solutif. Proses survey dan pemetaan berjalan lancar dan data yang dihasilkan sangat akurat. Sangat direkomendasikan!',
+    name: 'Pak Sair',
+    company: 'Makassar',
+    comment: '"Kami menghadapi tantangan integrasi data yang sangat kompleks dan sudah beberapa kali gagal dengan vendor lain. Tim ini datang dengan pendekatan yang segar, analisis mendalam, dan eksekusi yang sempurna. Mereka tidak hanya menyelesaikan masalah, tapi juga memberikan kami sistem yang kokoh untuk masa depan. Keahlian mereka benar-benar di atas rata-rata."',
     rating: 5,
-    avatar: 'https://i.pravatar.cc/150?img=5',
+    avatar: testimoni2, // Menggunakan gambar yang diimpor
   },
   {
-    name: 'Agus Wijaya',
-    company: 'Bank Jatim',
+    name: 'Pak Dhani',
+    company: 'Sampang',
     comment: 'Integrasi sistem pembayaran Host-to-Host berjalan tanpa kendala. Dukungan teknis 24 jam benar-benar membantu kami. Kerjasama yang luar biasa.',
-    rating: 4,
-    avatar: 'https://i.pravatar.cc/150?img=8',
+    rating: 5,
+    avatar: testimoni3, // Menggunakan gambar yang diimpor
   },
   {
-    name: 'Rina Hartati',
-    company: 'Dinas Lingkungan Hidup',
+    name: 'Wiwit',
+    company: 'Kota Batu',
     comment: 'Aplikasi eRetribusi yang dikembangkan sangat inovatif dan berhasil meningkatkan efisiensi penarikan retribusi di daerah kami. Tampilannya juga user-friendly.',
     rating: 5,
-    avatar: 'https://i.pravatar.cc/150?img=7',
+    avatar: testimoni4, // Menggunakan gambar yang diimpor
+  },
+  {
+    name: 'Dendi',
+    company: 'Kota Bekasi',
+    comment: '"Kerjasama yang luar biasa dari awal hingga akhir. Komunikasi tim sangat proaktif dan mereka benar-benar memahami visi kami. Aplikasi yang dihasilkan tidak hanya fungsional, tapi juga mendapat pujian dari masyarakat karena kemudahan penggunaannya. Proyek ini sukses besar berkat dedikasi mereka."',
+    rating: 5,
+    avatar: testimoni5, // Menggunakan gambar yang diimpor
   },
 ];
 
@@ -106,7 +121,7 @@ const TestimoniSection = () => {
                     <p className="text-gray-600 dark:text-gray-300 italic mb-6">"{testi.comment}"</p>
                   </div>
                   <div className="flex items-center">
-                    <img src={testi.avatar} alt={testi.name} className="w-14 h-14 rounded-full mr-4" />
+                    <img src={testi.avatar} alt={testi.name} className="w-14 h-14 rounded-full mr-4 object-cover" />
                     <div>
                       <h4 className="font-bold text-gray-900 dark:text-white">{testi.name}</h4>
                       <p className="text-sm text-gray-500 dark:text-gray-400">{testi.company}</p>
@@ -140,16 +155,16 @@ const TestimoniSection = () => {
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="sr-only">Nama</label>
-                <input type="text" name="name" id="name" value={formData.name} onChange={handleInputChange} placeholder="Nama Anda" required className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border-2 border-transparent focus:border-blue-500 focus:ring-0 transition"/>
+                <input type="text" name="name" id="name" value={formData.name} onChange={handleInputChange} placeholder="Nama Anda" required className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border-2 border-transparent focus:border-blue-500 focus:ring-0 transition text-gray-900 dark:text-white"/>
               </div>
               <div>
                 <label htmlFor="email" className="sr-only">Email</label>
-                <input type="email" name="email" id="email" value={formData.email} onChange={handleInputChange} placeholder="Alamat Email" required className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border-2 border-transparent focus:border-blue-500 focus:ring-0 transition"/>
+                <input type="email" name="email" id="email" value={formData.email} onChange={handleInputChange} placeholder="Alamat Email" required className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border-2 border-transparent focus:border-blue-500 focus:ring-0 transition text-gray-900 dark:text-white"/>
               </div>
             </div>
             <div>
               <label htmlFor="message" className="sr-only">Pesan</label>
-              <textarea name="message" id="message" rows="5" value={formData.message} onChange={handleInputChange} placeholder="Tulis komentar atau pertanyaan Anda..." required className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border-2 border-transparent focus:border-blue-500 focus:ring-0 transition"></textarea>
+              <textarea name="message" id="message" rows="5" value={formData.message} onChange={handleInputChange} placeholder="Tulis komentar atau pertanyaan Anda..." required className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border-2 border-transparent focus:border-blue-500 focus:ring-0 transition text-gray-900 dark:text-white"></textarea>
             </div>
             <div className="text-center">
               <motion.button
@@ -185,4 +200,3 @@ const TestimoniSection = () => {
 };
 
 export default TestimoniSection;
-
