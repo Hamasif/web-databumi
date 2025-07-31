@@ -1,7 +1,9 @@
+// File: CompanyHistorySection.jsx
+
 import { motion } from 'framer-motion';
 
 const CompanyHistorySection = () => {
-  // Data Visi & Misi
+  // Data Visi & Misi (tidak berubah)
   const visionMission = [
     {
       title: 'Visi Kami',
@@ -13,7 +15,7 @@ const CompanyHistorySection = () => {
     },
   ];
 
-  // Data milestones lengkap
+  // Data milestones lengkap (tidak berubah)
   const milestones = [
     { period: '2016', title: 'Application', description: ['Pemeliharaan Aplikasi SISMIOP Kab. Pamekasan', 'Pengembangan Sistem Pelayanan PBB Online Kota Makassar', 'dll'] },
     { period: '2016', title: 'Mapping & Survey', description: ['Pemutakhiran basis data dan pemetaan PBB Kota Bekasi', 'Pendataan dan Pemetaan PBB Kab. Luwu Timur', 'dll'] },
@@ -36,7 +38,7 @@ const CompanyHistorySection = () => {
     { period: '2024', title: 'Mapping & Survey', description: ['Belanja Pemutakhiran Basis Data Objek Pajak PBB', 'Pembuatan Basis Data SISMIOP', 'dll'] },
   ];
 
-  // Mengelompokkan milestones berdasarkan tahun
+  // Mengelompokkan milestones berdasarkan tahun (tidak berubah)
   const groupedMilestones = milestones.reduce((acc, milestone) => {
     const year = milestone.period;
     if (!acc[year]) {
@@ -47,9 +49,10 @@ const CompanyHistorySection = () => {
   }, {});
 
   return (
-    // PERBAIKAN: Menghapus style inline yang menyebabkan masalah scroll
-    <div id="company-history" className="w-full bg-white dark:bg-gray-900">
-      <section className="py-16 sm:py-20 lg:py-24 bg-white dark:bg-gray-900">
+    // PERBAIKAN: ID dihapus dari sini
+    <div className="w-full bg-white dark:bg-gray-900">
+      {/* PERBAIKAN: ID dipindahkan ke sini agar offsetTop akurat */}
+      <section id="company-history" className="py-16 sm:py-20 lg:py-24 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: -50 }}

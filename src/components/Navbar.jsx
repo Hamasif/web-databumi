@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+// File: Navbar.jsx
+
+// 1. Impor 'useRef' dari React
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navLinks = [
@@ -15,55 +18,61 @@ const Navbar = () => {
   const [activeLink, setActiveLink] = useState('Home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  // 2. Buat sebuah ref untuk header
+  const headerRef = useRef(null);
 
+  // useEffect untuk scroll spy (ini sudah benar dari perbaikan sebelumnya)
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      const triggerPoint = 150; 
+      let currentActiveLink = '';
 
-      // --- PERBAIKAN LOGIKA SCROLL SPY ---
-      // Loop dari BAWAH ke ATAS untuk menemukan section aktif yang paling tepat.
-      // Dengan cara ini, section pertama yang cocok adalah yang benar.
       for (let i = navLinks.length - 1; i >= 0; i--) {
         const link = navLinks[i];
         const section = document.getElementById(link.targetId);
-        
         if (section) {
-          const sectionTop = section.offsetTop;
-          // Cek apakah posisi scroll sudah melewati bagian atas section (dengan offset 150px)
-          if (window.scrollY >= sectionTop - 150) {
-            setActiveLink(link.name);
-            // Hentikan fungsi setelah menemukan link aktif agar tidak tertimpa oleh section di atasnya.
-            return; 
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= triggerPoint) {
+            currentActiveLink = link.name;
+            break; 
           }
         }
       }
+      if (window.scrollY < 200) {
+        setActiveLink('Home');
+      } else if (currentActiveLink) {
+        setActiveLink(currentActiveLink);
+      }
     };
-
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-  
+
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'auto';
     return () => {
       document.body.style.overflow = 'auto';
     };
   }, [isMenuOpen]);
 
-  // Fungsi handleLinkClick sudah benar dan tidak perlu diubah.
+  // --- PERBAIKAN UTAMA ADA DI FUNGSI INI ---
   const handleLinkClick = (linkName, targetId) => {
     setActiveLink(linkName);
     setIsMenuOpen(false);
 
     const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-        const navbarHeight = 80; 
+    
+    // Pastikan elemen target dan ref header sudah ada
+    if (targetElement && headerRef.current) {
+        // 3. Ukur tinggi navbar secara dinamis
+        const navbarHeight = headerRef.current.offsetHeight;
+        
+        // Kalkulasi posisi yang benar
         const elementPosition = targetElement.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
 
@@ -75,7 +84,9 @@ const Navbar = () => {
   };
 
   return (
+    // 4. Lampirkan ref ke elemen header
     <motion.header
+      ref={headerRef}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: 'spring', stiffness: 100 }}
@@ -94,6 +105,7 @@ const Navbar = () => {
           />
         </div>
 
+        {/* Sisa dari JSX tidak ada yang berubah */}
         <nav className="hidden md:block">
           <ul className={`flex items-center space-x-4 transition-all duration-300 p-2 ${
             !isScrolled && 'bg-white/10 backdrop-blur-sm rounded-full'

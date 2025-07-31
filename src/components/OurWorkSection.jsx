@@ -22,6 +22,7 @@ import project8 from '../assets/projects/project8.png';
 import project9 from '../assets/projects/project9.png';
 import project10 from '../assets/projects/project10.png';
 import project11 from '../assets/projects/project11.png';
+import project12 from '../assets/projects/project12.png';
 
 // Ikon untuk tombol close
 const CloseIcon = (props) => (
@@ -43,6 +44,7 @@ const projectsData = [
     { id: 9, image: project9, title: 'Pengukuran Bidang BUMI', description: 'Pengukuran bidang BUMI dilakukan oleh TIM lapangan PT DATA BUMI di Kabupaten Blitar.' },
     { id: 10, image: project10, title: 'Survey Zona Nilai Tanah', description: 'Survey zona nilai tanah dilakukan oleh TIM lapangan PT DATA BUMI di Kabupaten Blitar.' },
     { id: 11, image: project11, title: 'Survey Batas Desa', description: 'Survey batas desa dilakukan oleh TIM lapangan PT DATA BUMI dan juga aparat desa di Kabupaten Blitar.' },
+    { id: 12, image: project12, title: 'Rapat Koordinasi Sistem Parkir Gate E-parkir', description: 'Rapat koordinasi sitem parkir gate e-parkir dishub di Kota Batu' },
 ];
 
 const OurWorkSection = () => {

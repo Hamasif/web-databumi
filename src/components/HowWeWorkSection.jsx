@@ -28,7 +28,7 @@ const HowWeWorkSection = () => {
 
   return (
     // Menambahkan ID 'services' agar bisa di-scroll dari Navbar
-    <section id="services" className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black">
+    <section id="" className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
