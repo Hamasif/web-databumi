@@ -65,7 +65,13 @@ const Footer = () => {
                 <div className="flex items-start gap-3">
                   <MdEmail className="text-xl mt-1 flex-shrink-0" />
                   <a href="mailto:databumi@gmail.com" className="hover:underline text-gray-200">
-                    databumi@gmail.com
+                    databumiindonesia@gmail.com
+                  </a>
+                </div>
+                <div className="flex items-start gap-3">
+                  <MdEmail className="text-xl mt-1 flex-shrink-0" />
+                  <a href="mailto:databumi@gmail.com" className="hover:underline text-gray-200">
+                    info@databumi.id
                   </a>
                 </div>
                 <div className="flex items-start gap-3">

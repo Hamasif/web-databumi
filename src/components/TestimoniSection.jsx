@@ -34,22 +34,22 @@ const testimonials = [
     avatar: testimoni2, // Menggunakan gambar yang diimpor
   },
   {
-    name: 'Pak Dhani',
-    company: 'Sampang',
+    name: 'Bank Jatim',
+    company: 'Kota Malang',
     comment: 'Integrasi sistem pembayaran Host-to-Host berjalan tanpa kendala. Dukungan teknis 24 jam benar-benar membantu kami. Kerjasama yang luar biasa.',
     rating: 5,
     avatar: testimoni3, // Menggunakan gambar yang diimpor
   },
   {
-    name: 'Wiwit',
-    company: 'Kota Batu',
+    name: 'Hill House',
+    company: 'Kota Surabaya',
     comment: 'Aplikasi eRetribusi yang dikembangkan sangat inovatif dan berhasil meningkatkan efisiensi penarikan retribusi di daerah kami. Tampilannya juga user-friendly.',
     rating: 5,
     avatar: testimoni4, // Menggunakan gambar yang diimpor
   },
   {
-    name: 'Dendi',
-    company: 'Kota Bekasi',
+    name: 'Bapenda',
+    company: 'Kota Blitar',
     comment: '"Kerjasama yang luar biasa dari awal hingga akhir. Komunikasi tim sangat proaktif dan mereka benar-benar memahami visi kami. Aplikasi yang dihasilkan tidak hanya fungsional, tapi juga mendapat pujian dari masyarakat karena kemudahan penggunaannya. Proyek ini sukses besar berkat dedikasi mereka."',
     rating: 5,
     avatar: testimoni5, // Menggunakan gambar yang diimpor
